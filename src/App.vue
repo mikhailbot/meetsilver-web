@@ -24,7 +24,4 @@ body, html {
   margin: 0;
   font-family: 'Roboto Slab', serif;
 }
-#app {
-
-}
 </style>
