@@ -1,23 +1,30 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <header-component></header-component>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+import HeaderComponent from '@/components/HeaderComponent'
+
 export default {
-  name: 'app'
+  name: 'app',
+
+  components: {
+    HeaderComponent
+  }
 }
 </script>
 
 <style>
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+
+body, html {
+  margin: 0;
+  font-family: 'Roboto Slab', serif;
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
 }
 </style>
