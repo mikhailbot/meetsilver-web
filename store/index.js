@@ -5,7 +5,8 @@ import mutations from './mutations'
 const store = new Vuex.Store({
   state: {
     newEvent: {
-      title: ''
+      title: '',
+      location: ''
     }
   },
   actions,

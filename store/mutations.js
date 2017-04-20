@@ -9,6 +9,10 @@ export default {
 
   [types.UPDATE_TITLE] (state, title) {
     updateTitle(state, title)
+  },
+
+  [types.UPDATE_LOCATION] (state, location) {
+    updateLocation(state, location)
   }
 }
 
@@ -18,4 +22,8 @@ const createEvent = (state, event) => {
 
 const updateTitle = (state, title) => {
   state.newEvent.title = title
+}
+
+const updateLocation = (state, location) => {
+  state.newEvent.location = location
 }

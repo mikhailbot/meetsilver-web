@@ -36,7 +36,7 @@ export default {
 
 .text-input {
   max-width: 50rem;
-  margin: auto;
+  margin: 0 auto 3rem;
 }
 
 label {
@@ -55,6 +55,7 @@ label {
     font-weight: 700;
     font-size: 2rem;
     font-family: 'Roboto Slab', serif;
+    color: $black;
     text-align: center;
     border: none;
     border-bottom: 2px solid $primary-color;

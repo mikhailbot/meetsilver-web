@@ -1,6 +1,7 @@
 <template>
   <section class="create-event-form">
     <text-input :value="title" :label="labels.title" @update="updateTitle"></text-input>
+    <text-input :value="location" :label="labels.location" @update="updateLocation"></text-input>
   </section>
 </template>
 
@@ -16,19 +17,21 @@ export default {
   data () {
     return {
       labels: {
-        title: 'Name your event below.'
+        title: 'Name your event below.',
+        location: 'Where is the event taking place?'
       }
     }
   },
 
   methods: {
     ...mapActions([
-      'updateTitle'
+      'updateTitle', 'updateLocation'
     ])
   },
 
   computed: mapState({
-    title: state => state.newEvent.title
+    title: state => state.newEvent.title,
+    location: state => state.newEvent.location
   })
 }
 </script>
