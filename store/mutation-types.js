@@ -1,1 +1,2 @@
+export const UPDATE_TITLE = 'UPDATE_TITLE'
 export const CREATE_EVENT = 'CREATE_EVENT'

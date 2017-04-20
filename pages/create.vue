@@ -1,11 +1,17 @@
 <template>
   <section class="create-event-page">
-    <h1>Create event page goes here...</h1>
+    <create-event></create-event>
   </section>
 </template>
 
 <script>
+import CreateEvent from '~components/CreateEvent'
+
 export default {
+  components: {
+    CreateEvent
+  },
+
   head () {
     return {
       title: 'Create Event | MeetSilver'
