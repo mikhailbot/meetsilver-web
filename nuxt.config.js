@@ -36,6 +36,6 @@ module.exports = {
     }
   },
   css: [
-    'assets/main.scss'
+    { src: 'assets/main.scss', lang: 'scss' }
   ]
 }

@@ -1,6 +1,6 @@
 <template>
   <section class="create-event-form">
-    <text-input :title="title" :label="labels.title" @update="updateTitle"></text-input>
+    <text-input :value="title" :label="labels.title" @update="updateTitle"></text-input>
   </section>
 </template>
 
