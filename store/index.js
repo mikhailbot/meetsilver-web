@@ -6,7 +6,8 @@ const store = new Vuex.Store({
   state: {
     newEvent: {
       title: '',
-      location: ''
+      location: '',
+      options: []
     }
   },
   actions,

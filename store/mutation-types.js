@@ -1,3 +1,1 @@
-export const UPDATE_TITLE = 'UPDATE_TITLE'
-export const UPDATE_LOCATION = 'UPDATE_LOCATION'
 export const CREATE_EVENT = 'CREATE_EVENT'

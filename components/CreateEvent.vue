@@ -1,38 +1,59 @@
 <template>
   <section class="create-event-form">
-    <text-input :value="title" :label="labels.title" @update="updateTitle"></text-input>
-    <text-input :value="location" :label="labels.location" @update="updateLocation"></text-input>
+    <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
+    <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
+    <submit-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></submit-button>
   </section>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions } from 'vuex'
 import TextInput from '~components/TextInput'
+import SubmitButton from '~components/SubmitButton'
 
 export default {
   components: {
-    TextInput
+    TextInput, SubmitButton
   },
 
   data () {
     return {
       labels: {
         title: 'Name your event below.',
-        location: 'Where is the event taking place?'
+        location: 'Where is the event taking place?',
+        create: 'When ready, click below!'
+      },
+      event: {
+        title: '',
+        location: '',
+        options: []
       }
     }
   },
 
   methods: {
     ...mapActions([
-      'updateTitle', 'updateLocation'
-    ])
-  },
+      'createEvent'
+    ]),
 
-  computed: mapState({
-    title: state => state.newEvent.title,
-    location: state => state.newEvent.location
-  })
+    updateTitle (title) {
+      this.event.title = title
+    },
+
+    updateLocation (location) {
+      this.event.location = location
+    },
+
+    newEvent () {
+      this.$store.dispatch('createEvent', this.event)
+        .then(response => {
+          console.info(response)
+        })
+        .catch(error => {
+          console.error(error)
+        })
+    }
+  }
 }
 </script>
 
