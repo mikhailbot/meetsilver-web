@@ -8,7 +8,7 @@
     "nuxt": "latest"
   },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "PORT=4000 nuxt",
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
@@ -16,6 +16,7 @@
     "precommit": "npm run lint"
   },
   "devDependencies": {
+    "axios": "^0.16.1",
     "babel-eslint": "^7.1.1",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",

@@ -47,7 +47,7 @@ export default {
     newEvent () {
       this.$store.dispatch('createEvent', this.event)
         .then(response => {
-          console.info(response)
+          this.$router.push(`/${response}`)
         })
         .catch(error => {
           console.error(error)
