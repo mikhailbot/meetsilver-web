@@ -35,7 +35,16 @@ module.exports = {
       }
     }
   },
+  /*
+  ** Global css
+  */
   css: [
     { src: 'assets/main.scss', lang: 'scss' }
-  ]
+  ],
+  /*
+  ** Environment Variables
+  */
+  env: {
+    apiBaseUrl: process.env.API_BASE_URL || 'http://localhost:3000'
+  }
 }
