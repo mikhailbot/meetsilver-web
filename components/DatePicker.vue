@@ -1,6 +1,6 @@
 <template>
   <div class="datepicker">
-    <input type="text" ref="datepicker" class="datepicker">
+    <input type="text" ref="datepicker" class="datepicker-input">
     <vue-button
       :text="'Add new date'"
       :label="'Great, let’s add some meeting times!'"
@@ -42,7 +42,7 @@ export default {
   max-width: 18rem;
   margin: 2rem auto;
 
-  .datepicker {
+  .datepicker-input {
     display: none;
   }
 }
