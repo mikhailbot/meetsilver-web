@@ -28,6 +28,7 @@ export default {
       display: block;
       margin-top: 1rem;
       padding: 0.75rem 2.25rem;
+      font-family: 'Roboto Slab', serif;
       font-size: 1.25rem;
       font-weight: 700;
       color: $white;
