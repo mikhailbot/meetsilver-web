@@ -1,15 +1,15 @@
 <template>
   <div class="create-options">
-    <input type="text" id="datepicker">
+    <date-picker></date-picker>
   </div>
 </template>
 
 <script>
-import pikaday from 'pikaday'
+import DatePicker from '~components/DatePicker'
 
 export default {
-  created () {
-    this.el
+  components: {
+    DatePicker
   }
 }
 </script>

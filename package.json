@@ -25,6 +25,7 @@
     "eslint-plugin-promise": "^3.4.1",
     "eslint-plugin-standard": "^2.0.1",
     "node-sass": "^4.5.2",
+    "pikaday": "^1.5.1",
     "sass-loader": "^6.0.3"
   }
 }

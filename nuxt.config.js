@@ -40,7 +40,8 @@ module.exports = {
   ** Global css
   */
   css: [
-    { src: 'assets/main.scss', lang: 'scss' }
+    { src: 'assets/main.scss', lang: 'scss' },
+    'pikaday/css/pikaday.css'
   ],
   /*
   ** Environment Variables
