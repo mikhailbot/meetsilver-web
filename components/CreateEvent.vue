@@ -2,18 +2,20 @@
   <section class="create-event-form">
     <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
     <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
+    <create-options></create-options>
     <submit-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></submit-button>
   </section>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
+import CreateOptions from '~components/CreateOptions'
 import TextInput from '~components/TextInput'
 import SubmitButton from '~components/SubmitButton'
 
 export default {
   components: {
-    TextInput, SubmitButton
+    CreateOptions, TextInput, SubmitButton
   },
 
   data () {
