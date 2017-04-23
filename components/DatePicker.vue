@@ -1,20 +1,20 @@
 <template>
   <div class="datepicker">
     <input type="text" ref="datepicker" class="datepicker">
-    <submit-button
+    <vue-button
       :text="'Add new date'"
       :label="'Great, let’s add some meeting times!'"
       ref="triggerdatepicker">
-    </submit-button>
+    </vue-button>
 </div>
 </template>
 
 <script>
-import SubmitButton from '~components/SubmitButton'
+import VueButton from '~components/VueButton'
 
 export default {
   components: {
-    SubmitButton
+    VueButton
   },
 
   data () {

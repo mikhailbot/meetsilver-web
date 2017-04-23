@@ -3,7 +3,7 @@
     <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
     <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
     <create-options></create-options>
-    <submit-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></submit-button>
+    <vue-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></vue-button>
   </section>
 </template>
 
@@ -11,11 +11,11 @@
 import { mapActions } from 'vuex'
 import CreateOptions from '~components/CreateOptions'
 import TextInput from '~components/TextInput'
-import SubmitButton from '~components/SubmitButton'
+import VueButton from '~components/VueButton'
 
 export default {
   components: {
-    CreateOptions, TextInput, SubmitButton
+    CreateOptions, TextInput, VueButton
   },
 
   data () {
