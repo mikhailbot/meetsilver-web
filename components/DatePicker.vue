@@ -25,14 +25,22 @@ export default {
 
   mounted () {
     const Pikaday = require('Pikaday')
+    const vm = this
     this.picker = new Pikaday({
       field: this.$refs.datepicker,
       trigger: this.$refs.triggerdatepicker.$el.childNodes[0].children[0],
       minDate: new Date(),
       onSelect () {
         console.log(`Date selected was ${this.toString()}`)
+        vm.addDate(this.getDate())
       }
     })
+  },
+
+  methods: {
+    addDate (date) {
+      this.$emit('addDate', date)
+    }
   }
 }
 </script>

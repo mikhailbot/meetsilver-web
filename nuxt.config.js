@@ -34,7 +34,7 @@ module.exports = {
         })
       }
     },
-    vendor: [ 'axios' ]
+    vendor: [ 'axios', 'moment' ]
   },
   /*
   ** Global css
