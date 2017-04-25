@@ -2,18 +2,19 @@
   <div class="create-options">
     <date-picker @addDate="addDate"></date-picker>
 
-    <div v-for="date in availableDates">
-      {{ date }}
+    <div v-for="date in availableDates" class="available-options">
+      <date-option :date="date"></date-option>
     </div>
   </div>
 </template>
 
 <script>
 import DatePicker from '~components/DatePicker'
+import DateOption from '~components/DateOption'
 
 export default {
   components: {
-    DatePicker
+    DatePicker, DateOption
   },
 
   data () {
