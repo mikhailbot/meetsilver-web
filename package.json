@@ -18,6 +18,8 @@
   "devDependencies": {
     "axios": "^0.16.1",
     "babel-eslint": "^7.1.1",
+    "babel-plugin-component": "^0.9.1",
+    "element-ui": "^1.2.9",
     "eslint": "^3.15.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-loader": "^1.6.1",

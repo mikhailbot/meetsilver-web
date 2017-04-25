@@ -34,7 +34,15 @@ module.exports = {
         })
       }
     },
-    vendor: [ 'axios', 'moment' ]
+    vendor: [ 'axios', 'moment' ],
+    babel: {
+      plugins: [
+        ['component', [{
+          'libraryName': 'element-ui',
+          'styleLibraryName': 'theme-default'
+        }]]
+      ]
+    }
   },
   /*
   ** Global css
@@ -52,5 +60,5 @@ module.exports = {
   /*
   ** Plugins
   */
-  plugins: [ '~plugins/axios' ]
+  plugins: [ '~plugins/axios', '~plugins/element-ui' ]
 }
