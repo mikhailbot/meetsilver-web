@@ -2,7 +2,7 @@
   <div class="create-options">
     <date-picker @addDate="addDate"></date-picker>
 
-    <div v-for="date in availableDates" class="available-options">
+    <div v-for="date in sortedAvailableDates" class="available-options">
       <date-option :date="date"></date-option>
     </div>
   </div>
@@ -20,6 +20,12 @@ export default {
   data () {
     return {
       availableDates: []
+    }
+  },
+
+  computed: {
+    sortedAvailableDates () {
+      return this.availableDates.sort()
     }
   },
 
