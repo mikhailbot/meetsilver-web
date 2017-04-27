@@ -4,10 +4,10 @@
       {{ date | readable }}
     </div>
     <div class="available-options">
-      <div v-for="time in sortedOptions">
+      <div v-for="time in sortedOptions" class="option time">
         {{ time }}
       </div>
-      <div class="new-option" @click="pickTime">
+      <div class="option new" @click="pickTime">
         <div class="option-text">
           +
         </div>
@@ -78,9 +78,10 @@ export default {
     margin-bottom: 1rem;
   }
 
-  .new-option {
+  .option {
     width: 8rem;
-    height: 2.5rem;
+    height: 2.75rem;
+    margin: 0 0.5rem 0.75rem;
     font-size: 1.5rem;
     background: $white;
     color: $grey;
@@ -92,11 +93,24 @@ export default {
     .option-text {
       position: absolute;
     }
+
+    &.new {
+      cursor: pointer;
+    }
+
+    &.time {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: $primary-color;
+    }
   }
 
   .available-options {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
+    max-width: 30rem;
+    margin: auto;
   }
 
   .el-date-editor--time-select {
