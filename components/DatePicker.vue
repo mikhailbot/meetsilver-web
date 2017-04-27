@@ -1,21 +1,21 @@
 <template>
   <div class="datepicker">
     <vue-button
-    :text="'Add new date'"
-    :label="'Great, let’s add some meeting times!'"
-    @click.native="pickDate"
-    ref="triggerdatepicker">
-  </vue-button>
-  <el-date-picker
-  v-model="date"
-  type="date"
-  placeholder="Pick a day"
-  align="left"
-  @change="addDate"
-  :picker-options="pickerOptions"
-  ref="eldatepicker">
-</el-date-picker>
-</div>
+      :text="'Add new date'"
+      :label="'Great, let’s add some meeting times!'"
+      @click.native="pickDate"
+      ref="triggerdatepicker">
+    </vue-button>
+    <el-date-picker
+      v-model="date"
+      type="date"
+      placeholder="Pick a day"
+      align="left"
+      @change="addDate"
+      :picker-options="pickerOptions"
+      ref="eldatepicker">
+    </el-date-picker>
+  </div>
 </template>
 
 <script>

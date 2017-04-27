@@ -4,10 +4,20 @@
       {{ date | readable }}
     </div>
     <div class="available-options">
-      <div class="new-option">
+      <div v-for="time in sortedOptions">
+        {{ time }}
+      </div>
+      <div class="new-option" @click="pickTime">
         <div class="option-text">
           +
         </div>
+        <el-time-select
+          v-model="newTime"
+          :pickerOptions="pickerOptions"
+          @change="addTime"
+          placeholder="Select time"
+          ref="eltimepicker">
+        </el-time-select>
       </div>
     </div>
   </div>
@@ -21,7 +31,28 @@ export default {
 
   data () {
     return {
-      options: []
+      options: [],
+      newTime: null,
+      pickerOptions: {
+        start: '06:00',
+        end: '20:00'
+      }
+    }
+  },
+
+  methods: {
+    pickTime () {
+      this.$refs.eltimepicker.pickerVisible = true
+    },
+
+    addTime (time) {
+      this.options.indexOf(time) === -1 ? this.options.push(time) : false
+    }
+  },
+
+  computed: {
+    sortedOptions () {
+      return this.options.sort()
     }
   },
 
@@ -57,11 +88,27 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    .option-text {
+      position: absolute;
+    }
   }
 
   .available-options {
     display: flex;
     justify-content: center;
+  }
+
+  .el-date-editor--time-select {
+    margin: auto;
+    width: 8rem;
+    display: block;
+  }
+
+  .el-input {
+    visibility: hidden;
+    margin: auto;
+    width: 8rem;
   }
 }
 </style>
