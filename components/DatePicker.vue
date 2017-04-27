@@ -1,11 +1,20 @@
 <template>
   <div class="datepicker">
-    <input type="text" ref="datepicker" class="datepicker-input">
     <vue-button
-      :text="'Add new date'"
-      :label="'Great, let’s add some meeting times!'"
-      ref="triggerdatepicker">
-    </vue-button>
+    :text="'Add new date'"
+    :label="'Great, let’s add some meeting times!'"
+    @click.native="pickDate"
+    ref="triggerdatepicker">
+  </vue-button>
+  <el-date-picker
+  v-model="date"
+  type="date"
+  placeholder="Pick a day"
+  align="left"
+  @change="addDate"
+  :picker-options="pickerOptions"
+  ref="eldatepicker">
+</el-date-picker>
 </div>
 </template>
 
@@ -19,27 +28,41 @@ export default {
 
   data () {
     return {
-      picker: null
-    }
-  },
-
-  mounted () {
-    const Pikaday = require('Pikaday')
-    const vm = this
-    this.picker = new Pikaday({
-      field: this.$refs.datepicker,
-      trigger: this.$refs.triggerdatepicker.$el.childNodes[0].children[0],
-      minDate: new Date(),
-      onSelect () {
-        console.log(`Date selected was ${this.toString()}`)
-        vm.addDate(this.getDate())
+      date: null,
+      pickerOptions: {
+        shortcuts: [
+          {
+            text: 'Today',
+            onClick (picker) {
+              picker.$emit('pick', new Date())
+            }
+          }, {
+            text: 'Tomorrow',
+            onClick (picker) {
+              const date = new Date()
+              date.setTime(date.getTime() + 3600 * 1000 * 24)
+              picker.$emit('pick', date)
+            }
+          }, {
+            text: 'Next week',
+            onClick (picker) {
+              const date = new Date()
+              date.setTime(date.getTime() + 3600 * 1000 * 24 * 7)
+              picker.$emit('pick', date)
+            }
+          }
+        ]
       }
-    })
+    }
   },
 
   methods: {
     addDate (date) {
       this.$emit('addDate', date)
+    },
+
+    pickDate () {
+      this.$refs.eldatepicker.pickerVisible = true
     }
   }
 }
@@ -52,6 +75,17 @@ export default {
 
   .datepicker-input {
     display: none;
+  }
+
+  .el-input {
+    visibility: hidden;
+    height: 0;
+  }
+
+  .el-date-editor {
+    padding: 0;
+    margin: auto;
+    width: 100%;
   }
 }
 </style>

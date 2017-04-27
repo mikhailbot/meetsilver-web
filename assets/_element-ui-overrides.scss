@@ -1,0 +1,25 @@
+.el-picker-panel {
+  .el-date-table {
+    td.current:not(.disabled) {
+      background-color: $primary-color !important;
+    }
+
+    td.today {
+      color: $primary-color;
+
+      &:before {
+        border-top-color: $primary-color;
+      }
+    }
+  }
+
+  .el-date-picker__header-label:hover, .el-picker-panel__icon-btn:hover {
+    color: $primary-color;
+  }
+
+  .el-month-table, .el-year-table {
+    td.current:not(.disabled) .cell {
+      background-color: $primary-color !important;
+    }
+  }
+}
