@@ -25,7 +25,7 @@ export default {
 
   methods: {
     addDate (date) {
-      this.availableDates.push(date)
+      this.availableDates.indexOf(date) === -1 ? this.availableDates.push(date) : false
     }
   }
 }
