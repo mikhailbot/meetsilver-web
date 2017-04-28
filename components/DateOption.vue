@@ -51,10 +51,6 @@ export default {
   },
 
   computed: {
-    sortedOptions () {
-      return this.options.sort()
-    },
-
     dateTimes () {
       return this.$store.getters.getDateTimes(this.date)
     }
@@ -72,7 +68,6 @@ export default {
 @import "~assets/variables";
 
 .date-option {
-
   margin-bottom: 5rem;
 
   .date-title {
