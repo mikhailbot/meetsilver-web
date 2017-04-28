@@ -2,6 +2,10 @@ import * as types from './mutation-types'
 import _ from '~plugins/lodash'
 
 export default {
+  [types.ADD_EVENT_META] (state, meta) {
+    addEventMeta(state, meta)
+  },
+
   [types.ADD_DATE_OPTION] (state, date) {
     addDateOption(state, date)
   },
@@ -13,6 +17,11 @@ export default {
   [types.CREATE_EVENT] (state, event) {
     createEvent(state, event)
   }
+}
+
+const addEventMeta = (state, meta) => {
+  state.newEvent.title = meta.title || state.newEvent.title
+  state.newEvent.location = meta.location || state.newEvent.location
 }
 
 const addTimeSlot = (state, timeSlot) => {

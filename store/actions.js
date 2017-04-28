@@ -2,6 +2,10 @@ import * as types from './mutation-types'
 import axios from '~plugins/axios'
 import _ from '~plugins/lodash'
 
+export const addEventMeta = ({ commit }, payload) => {
+  commit(types.ADD_EVENT_META, payload)
+}
+
 export const addDateOption = ({ commit, state }, payload) => {
   _.findIndex(state.newEvent.options, { date: payload }) === -1 ? commit(types.ADD_DATE_OPTION, payload) : false
 }

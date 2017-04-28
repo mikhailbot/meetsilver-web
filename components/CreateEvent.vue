@@ -1,14 +1,15 @@
 <template>
   <section class="create-event-form">
-    <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
-    <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
+    <text-input :value="eventMeta.title" :label="labels.title" @update="updateTitle"></text-input>
+    <text-input :value="eventMeta.location" :label="labels.location" @update="updateLocation"></text-input>
     <create-options></create-options>
     <vue-button :text="'Create event'" :label="labels.create" @click="newEvent"></vue-button>
   </section>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import _ from '~plugins/lodash'
+import { mapActions, mapGetters } from 'vuex'
 import CreateOptions from '~components/CreateOptions'
 import TextInput from '~components/TextInput'
 import VueButton from '~components/VueButton'
@@ -38,23 +39,29 @@ export default {
       'createEvent'
     ]),
 
-    updateTitle (title) {
-      this.event.title = title
-    },
+    updateTitle: _.debounce(function (title) {
+      this.$store.dispatch('addEventMeta', { title })
+    }, 1000),
 
-    updateLocation (location) {
-      this.event.location = location
-    },
+    updateLocation: _.debounce(function (location) {
+      this.$store.dispatch('addEventMeta', { location })
+    }, 1000),
 
     newEvent () {
       this.$store.dispatch('createEvent', this.event)
-        .then(response => {
-          this.$router.push(`/e/${response}`)
-        })
-        .catch(error => {
-          console.error(error)
-        })
+      .then(response => {
+        this.$router.push(`/e/${response}`)
+      })
+      .catch(error => {
+        console.error(error)
+      })
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      'eventMeta'
+    ])
   }
 }
 </script>
