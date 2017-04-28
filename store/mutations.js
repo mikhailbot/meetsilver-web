@@ -2,8 +2,12 @@ import * as types from './mutation-types'
 import _ from '~plugins/lodash'
 
 export default {
-  [types.ADD_DATE_OPTION] (state, dateOption) {
-    addDateOption(state, dateOption)
+  [types.ADD_DATE_OPTION] (state, date) {
+    addDateOption(state, date)
+  },
+
+  [types.ADD_TIME_SLOT] (state, timeSlot) {
+    addTimeSlot(state, timeSlot)
   },
 
   [types.CREATE_EVENT] (state, event) {
@@ -11,8 +15,12 @@ export default {
   }
 }
 
+const addTimeSlot = (state, timeSlot) => {
+  state.newEvent.options[_.findIndex(state.newEvent.options, { date: timeSlot.date })].times.push(timeSlot.time)
+}
+
 const addDateOption = (state, date) => {
-  _.findIndex(state.newEvent.options, { date }) === -1 ? state.newEvent.options.push({ date }) : false
+  state.newEvent.options.push({ date: date, times: [] })
 }
 
 const createEvent = (state, event) => {

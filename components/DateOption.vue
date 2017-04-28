@@ -4,7 +4,7 @@
       {{ date | readable }}
     </div>
     <div class="available-options">
-      <div v-for="time in sortedOptions" class="option time">
+      <div v-for="time in dateTimes" class="option time">
         {{ time }}
       </div>
       <div class="option new" @click="pickTime">
@@ -46,14 +46,17 @@ export default {
     },
 
     addTime (time) {
-      this.options.indexOf(time) === -1 ? this.options.push(time) : false
-      this.$emit('updateDateOptions', { date: this.date, options: this.options })
+      this.$store.dispatch('addTimeSlot', { date: this.date, time: time })
     }
   },
 
   computed: {
     sortedOptions () {
       return this.options.sort()
+    },
+
+    dateTimes () {
+      return this.$store.getters.getDateTimes(this.date)
     }
   },
 

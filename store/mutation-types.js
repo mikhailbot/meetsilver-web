@@ -1,2 +1,3 @@
 export const ADD_DATE_OPTION = 'ADD_DATE_OPTION'
+export const ADD_TIME_SLOT = 'ADD_TIME_SLOT'
 export const CREATE_EVENT = 'CREATE_EVENT'
