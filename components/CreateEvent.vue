@@ -3,7 +3,7 @@
     <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
     <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
     <create-options></create-options>
-    <vue-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></vue-button>
+    <vue-button :text="'Create event'" :label="labels.create" @click="newEvent"></vue-button>
   </section>
 </template>
 

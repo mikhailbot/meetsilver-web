@@ -3,7 +3,7 @@
     <vue-button
       :text="'Add new date'"
       :label="'Great, let’s add some meeting times!'"
-      @click.native="pickDate"
+      @click="pickDate"
       ref="triggerdatepicker">
     </vue-button>
     <el-date-picker
