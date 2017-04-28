@@ -11,7 +11,7 @@
       type="date"
       placeholder="Pick a day"
       align="left"
-      @change="addDate"
+      @change="addDateOption(date)"
       :picker-options="pickerOptions"
       ref="eldatepicker">
     </el-date-picker>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 import VueButton from '~components/VueButton'
 
 export default {
@@ -57,9 +58,9 @@ export default {
   },
 
   methods: {
-    addDate (date) {
-      this.$emit('addDate', date)
-    },
+    ...mapActions([
+      'addDateOption'
+    ]),
 
     pickDate () {
       this.$refs.eldatepicker.pickerVisible = true

@@ -1,15 +1,15 @@
 <template>
   <div class="create-options">
-    <date-picker @addDate="addDate"></date-picker>
+    <date-picker></date-picker>
 
     <div v-for="date in sortedDateOptions" class="available-options">
-      <date-option :date="date.date" @updateDateOptions="updateDateOptions"></date-option>
+      <date-option :date="date.date"></date-option>
     </div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 import DatePicker from '~components/DatePicker'
 import DateOption from '~components/DateOption'
 
@@ -22,16 +22,6 @@ export default {
     ...mapGetters([
       'sortedDateOptions'
     ])
-  },
-
-  methods: {
-    ...mapActions({
-      addDate: 'addDateOption'
-    }),
-
-    updateDateOptions (dateOption) {
-      console.log(dateOption)
-    }
   }
 }
 </script>
