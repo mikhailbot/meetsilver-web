@@ -1,1 +1,2 @@
+export const ADD_DATE_OPTION = 'ADD_DATE_OPTION'
 export const CREATE_EVENT = 'CREATE_EVENT'

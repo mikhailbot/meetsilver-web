@@ -47,6 +47,7 @@ export default {
 
     addTime (time) {
       this.options.indexOf(time) === -1 ? this.options.push(time) : false
+      this.$emit('updateDateOptions', { date: this.date, options: this.options })
     }
   },
 

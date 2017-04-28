@@ -34,7 +34,7 @@ module.exports = {
         })
       }
     },
-    vendor: [ 'axios', 'moment' ],
+    vendor: [ 'axios', 'moment', 'lodash' ],
     babel: {
       plugins: [
         ['component', [{
@@ -60,5 +60,5 @@ module.exports = {
   /*
   ** Plugins
   */
-  plugins: [ '~plugins/axios', '~plugins/element-ui' ]
+  plugins: [ '~plugins/axios', '~plugins/element-ui', '~plugins/lodash' ]
 }
