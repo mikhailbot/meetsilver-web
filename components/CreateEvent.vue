@@ -1,19 +1,23 @@
 <template>
   <section class="create-event-form">
-    <text-input :value="event.title" :label="labels.title" @update="updateTitle"></text-input>
-    <text-input :value="event.location" :label="labels.location" @update="updateLocation"></text-input>
-    <submit-button :text="'Create event'" :label="labels.create" @click.native="newEvent"></submit-button>
+    <text-input :value="eventMeta.title" :label="labels.title" @update="updateTitle"></text-input>
+    <text-input :value="eventMeta.location" :label="labels.location" @update="updateLocation"></text-input>
+    <create-options></create-options>
+    <vue-button :text="'Create event'" :label="labels.create" @click="newEvent"></vue-button>
   </section>
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import _ from '~plugins/lodash'
+import axios from '~plugins/axios'
+import { mapActions, mapGetters } from 'vuex'
+import CreateOptions from '~components/CreateOptions'
 import TextInput from '~components/TextInput'
-import SubmitButton from '~components/SubmitButton'
+import VueButton from '~components/VueButton'
 
 export default {
   components: {
-    TextInput, SubmitButton
+    CreateOptions, TextInput, VueButton
   },
 
   data () {
@@ -36,23 +40,42 @@ export default {
       'createEvent'
     ]),
 
-    updateTitle (title) {
-      this.event.title = title
-    },
+    updateTitle: _.debounce(function (title) {
+      this.$store.dispatch('addEventMeta', { title })
+    }, 1000),
 
-    updateLocation (location) {
-      this.event.location = location
-    },
+    updateLocation: _.debounce(function (location) {
+      this.$store.dispatch('addEventMeta', { location })
+    }, 1000),
 
     newEvent () {
-      this.$store.dispatch('createEvent', this.event)
-        .then(response => {
-          this.$router.push(`/e/${response}`)
+      const event = this.$store.state.newEvent
+      const options = _.flatMap(event.options, (option) => {
+        return _.map(option.times, (time) => {
+          return { date: time }
         })
-        .catch(error => {
-          console.error(error)
-        })
+      })
+
+      axios.post('/events', {
+        event: {
+          title: event.title,
+          location: event.location,
+          options_attributes: options
+        }
+      })
+      .then((response) => {
+        this.$router.push(`/e/${response.data.slug}`)
+      })
+      .catch((error) => {
+        console.error(error)
+      })
     }
+  },
+
+  computed: {
+    ...mapGetters([
+      'eventMeta'
+    ])
   }
 }
 </script>
