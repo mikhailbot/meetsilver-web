@@ -1,11 +1,11 @@
 <template>
   <div class="date-option">
     <div class="date-title">
-      {{ date | readable }}
+      {{ date | dateFilter }}
     </div>
     <div class="available-options">
       <div v-for="time in dateTimes" class="option time">
-        {{ time }}
+        {{ time | timeFilter }}
       </div>
       <div class="option new" @click="pickTime">
         <div class="option-text">
@@ -57,8 +57,12 @@ export default {
   },
 
   filters: {
-    readable (value) {
+    dateFilter (value) {
       return moment(value).format('dddd, MMMM Do YYYY')
+    },
+
+    timeFilter (value) {
+      return moment(value).format('H:mm a')
     }
   }
 }
