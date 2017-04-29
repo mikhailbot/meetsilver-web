@@ -62,7 +62,7 @@ export default {
     },
 
     timeFilter (value) {
-      return moment(value).format('H:mm a')
+      return moment(value).format('h:mm a')
     }
   }
 }
