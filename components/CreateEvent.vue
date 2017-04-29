@@ -57,9 +57,11 @@ export default {
       })
 
       axios.post('/events', {
-        title: event.title,
-        location: event.location,
-        options: options
+        event: {
+          title: event.title,
+          location: event.location,
+          options_attributes: options
+        }
       })
       .then((response) => {
         this.$router.push(`/e/${response.data.slug}`)
