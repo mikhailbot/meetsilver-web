@@ -15,7 +15,7 @@ export const addTimeSlot = ({ commit, state }, payload) => {
   const dateIndex = _.findIndex(state.newEvent.options, { date: payload.date })
 
   const date = payload.date
-  const time = moment(`${date.getUTCDate()}-${date.getUTCMonth() + 1}-${date.getUTCFullYear()} ${payload.time}`, 'D-M-YYYY H:m').format()
+  const time = moment(`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()} ${payload.time}`, 'D-M-YYYY H:m').format()
 
   _.indexOf(state.newEvent.options[dateIndex].times, time) === -1 ? commit(types.ADD_TIME_SLOT, { date, time }) : false
 }
