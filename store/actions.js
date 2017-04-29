@@ -1,5 +1,4 @@
 import * as types from './mutation-types'
-import axios from '~plugins/axios'
 import _ from '~plugins/lodash'
 import moment from 'moment'
 
@@ -18,17 +17,4 @@ export const addTimeSlot = ({ commit, state }, payload) => {
   const time = moment(`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()} ${payload.time}`, 'D-M-YYYY H:m').format()
 
   _.indexOf(state.newEvent.options[dateIndex].times, time) === -1 ? commit(types.ADD_TIME_SLOT, { date, time }) : false
-}
-
-export const createEvent = ({ commit }, payload) => {
-  return new Promise((resolve, reject) => {
-    axios.post('/events', payload)
-      .then((response) => {
-        commit(types.CREATE_EVENT, payload)
-        resolve(response.data.slug)
-      })
-      .catch((error) => {
-        reject(error)
-      })
-  })
 }

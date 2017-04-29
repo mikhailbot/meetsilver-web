@@ -9,6 +9,7 @@
 
 <script>
 import _ from '~plugins/lodash'
+import axios from '~plugins/axios'
 import { mapActions, mapGetters } from 'vuex'
 import CreateOptions from '~components/CreateOptions'
 import TextInput from '~components/TextInput'
@@ -48,11 +49,22 @@ export default {
     }, 1000),
 
     newEvent () {
-      this.$store.dispatch('createEvent', this.event)
-      .then(response => {
-        this.$router.push(`/e/${response}`)
+      const event = this.$store.state.newEvent
+      const options = _.flatMap(event.options, (option) => {
+        return _.map(option.times, (time) => {
+          return { date: time }
+        })
       })
-      .catch(error => {
+
+      axios.post('/events', {
+        title: event.title,
+        location: event.location,
+        options: options
+      })
+      .then((response) => {
+        this.$router.push(`/e/${response.data.slug}`)
+      })
+      .catch((error) => {
         console.error(error)
       })
     }
