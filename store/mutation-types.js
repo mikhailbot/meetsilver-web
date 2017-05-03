@@ -1,4 +1,5 @@
 export const ADD_EVENT_META = 'ADD_EVENT_META'
 export const ADD_DATE_OPTION = 'ADD_DATE_OPTION'
 export const ADD_TIME_SLOT = 'ADD_TIME_SLOT'
+export const REMOVE_TIME_SLOT = 'REMOVE_TIME_SLOT'
 export const CREATE_EVENT = 'CREATE_EVENT'

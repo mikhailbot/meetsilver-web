@@ -1,4 +1,4 @@
-import { debounce, findIndex, sortBy, indexOf, flatMap, map } from 'lodash'
+import { debounce, findIndex, sortBy, indexOf, flatMap, map, without } from 'lodash'
 
 export default {
   debounce,
@@ -6,5 +6,6 @@ export default {
   sortBy,
   indexOf,
   flatMap,
-  map
+  map,
+  without
 }

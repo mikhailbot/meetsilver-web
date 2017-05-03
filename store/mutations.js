@@ -14,6 +14,10 @@ export default {
     addTimeSlot(state, timeSlot)
   },
 
+  [types.REMOVE_TIME_SLOT] (state, timeSlot) {
+    removeTimeSlot(state, timeSlot)
+  },
+
   [types.CREATE_EVENT] (state, event) {
     createEvent(state, event)
   }
@@ -26,6 +30,10 @@ const addEventMeta = (state, meta) => {
 
 const addTimeSlot = (state, timeSlot) => {
   state.newEvent.options[_.findIndex(state.newEvent.options, { date: timeSlot.date })].times.push(timeSlot.time)
+}
+
+const removeTimeSlot = (state, timeSlot) => {
+  state.newEvent.options[timeSlot.dateIndex].times = _.without(state.newEvent.options[timeSlot.dateIndex].times, timeSlot.payload)
 }
 
 const addDateOption = (state, date) => {

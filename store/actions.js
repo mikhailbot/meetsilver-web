@@ -18,3 +18,13 @@ export const addTimeSlot = ({ commit, state }, payload) => {
 
   _.indexOf(state.newEvent.options[dateIndex].times, time) === -1 ? commit(types.ADD_TIME_SLOT, { date, time }) : false
 }
+
+export const removeTimeSlot = ({ commit, state }, payload) => {
+  const time = moment(payload)
+  const date = moment(time.format('YYYY-MM-DD')).toDate()
+  const dateIndex = _.findIndex(state.newEvent.options, { date: date })
+
+  if (dateIndex !== -1) {
+    commit(types.REMOVE_TIME_SLOT, { dateIndex, payload })
+  }
+}
