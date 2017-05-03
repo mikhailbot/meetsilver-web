@@ -10,7 +10,8 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Scheduling meetings, done simply!' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' }
     ]
   },
   /*
