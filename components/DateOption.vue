@@ -5,7 +5,7 @@
     </div>
     <div class="available-options">
       <div v-for="time in dateTimes" class="option time">
-        {{ time | timeFilter }}
+        <time-slot :time="time"></time-slot>
       </div>
       <div class="option new" @click="pickTime">
         <div class="option-text">
@@ -25,9 +25,14 @@
 
 <script>
 import moment from 'moment'
+import TimeSlot from '~components/TimeSlot'
 
 export default {
   props: [ 'date' ],
+
+  components: {
+    TimeSlot
+  },
 
   data () {
     return {
